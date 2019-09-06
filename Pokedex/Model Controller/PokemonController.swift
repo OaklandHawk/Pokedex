@@ -26,6 +26,46 @@ enum NetworkError: Error {
 
 class PokemonController {
 	
+	var pokemon: [Pokemon] = []
+	
 	private let baseURL = URL(string: "https://pokeapi.co/api/v2/pokemon")!
+	
+	func searchForPokemon(for pokemon: String, completion: @escaping (Result<Pokemon, NetworkError>) -> Void) {
+		let searchURL = baseURL.appendingPathComponent(pokemon)
+		
+		var request = URLRequest(url: searchURL)
+		request.httpMethod = HTTPMethod.post.rawValue
+		
+		URLSession.shared.dataTask(with: request) { (data, response, error) in
+			if let response = response as? HTTPURLResponse,
+				response.statusCode != 200 {
+				completion(.failure(.responseError))
+				return
+			}
+			
+			if let error = error {
+				completion(.failure(.otherError))
+				return
+			}
+			
+			guard let data = data else {
+				completion(.failure(.noData))
+				return
+			}
+			
+			let decoder = JSONDecoder()
+			
+			do {
+				let search = try decoder.decode(Pokemon.self, from: data)
+				completion(.success(search))
+			} catch {
+				NSLog("Decoding error: \(error)")
+				completion(.failure(.noDecode))
+				return
+			}
+		}.resume()
+	}
+	
+	
 	
 }
