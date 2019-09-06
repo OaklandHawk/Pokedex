@@ -7,3 +7,25 @@
 //
 
 import Foundation
+
+enum HTTPMethod: String {
+	case get = "GET"
+	case put = "PUT"
+	case post = "POST"
+	case delete = "DELETE"
+}
+
+enum NetworkError: Error {
+	case encodingError
+	case responseError
+	case otherError
+	case noData
+	case noDecode
+	case signUpError
+}
+
+class PokemonController {
+	
+	private let baseURL = URL(string: "https://pokeapi.co/api/v2/pokemon")!
+	
+}
