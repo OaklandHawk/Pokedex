@@ -30,8 +30,8 @@ class PokemonController {
 	
 	private let baseURL = URL(string: "https://pokeapi.co/api/v2/pokemon")!
 	
-	func searchForPokemon(for pokemon: String, completion: @escaping (Result<Pokemon, NetworkError>) -> Void) {
-		let searchURL = baseURL.appendingPathComponent(pokemon)
+	func searchForPokemon(for poke: String, completion: @escaping (Result<Pokemon, NetworkError>) -> Void) {
+		let searchURL = baseURL.appendingPathComponent(poke)
 		
 		var request = URLRequest(url: searchURL)
 		request.httpMethod = HTTPMethod.get.rawValue
@@ -43,7 +43,7 @@ class PokemonController {
 				return
 			}
 			
-			if let error = error {
+			if let _ = error {
 				completion(.failure(.otherError))
 				return
 			}
@@ -73,7 +73,7 @@ class PokemonController {
 		request.httpMethod = HTTPMethod.get.rawValue
 		
 		URLSession.shared.dataTask(with: request) { (data, _, error) in
-			if let error = error {
+			if let _ = error {
 				completion(.failure(.otherError))
 				return
 			}
