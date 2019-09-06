@@ -88,6 +88,12 @@ class PokemonController {
 		}.resume()
 	}
 	
+	func save(poke: Pokemon) {
+		pokemon.append(poke)
+	}
 	
+	func delete(indexOfPokemon: IndexPath) {
+		pokemon.remove(at: indexOfPokemon.row)
+	}
 	
 }
