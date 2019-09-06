@@ -13,7 +13,7 @@
         <!--Pokedex-->
         <scene sceneID="qAw-r7-FX5">
             <objects>
-                <tableViewController id="q9l-qy-Oqr" sceneMemberID="viewController">
+                <tableViewController id="q9l-qy-Oqr" customClass="PokedexTableViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7dy-PO-TTe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,10 +57,10 @@
             </objects>
             <point key="canvasLocation" x="1010.144927536232" y="151.33928571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Pokemon Detail View Controller-->
         <scene sceneID="85M-kz-NsD">
             <objects>
-                <viewController id="PFa-pA-0zs" sceneMemberID="viewController">
+                <viewController id="PFa-pA-0zs" customClass="PokemonDetailViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OCW-4X-Sfw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,7 +70,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pokemon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pw-7G-rfT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pokemon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pw-7G-rfT" userLabel="Name">
                                 <rect key="frame" x="171" y="214" width="72" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -99,6 +99,9 @@
                                 <rect key="frame" x="157" y="716" width="101" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save Pokemon"/>
+                                <connections>
+                                    <action selector="savePokemonButton:" destination="PFa-pA-0zs" eventType="touchUpInside" id="1QS-qm-QhK"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Abilities: asda" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tua-D6-XwT">
                                 <rect key="frame" x="75" y="658" width="106" height="21"/>
@@ -111,6 +114,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="sJd-iF-yKe"/>
                     </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="9pw-7G-rfT" id="bIr-VD-PGo"/>
+                        <outlet property="pokemonAbilitiesLabel" destination="Tua-D6-XwT" id="5dO-UN-0dQ"/>
+                        <outlet property="pokemonIdLabel" destination="8st-0s-w22" id="GoO-sM-v9w"/>
+                        <outlet property="pokemonImageView" destination="tzK-RT-ltY" id="Pst-93-ijp"/>
+                        <outlet property="pokemonSearchBar" destination="aoS-61-RY7" id="x4W-eJ-yaq"/>
+                        <outlet property="pokemonTypeLabel" destination="l5F-09-RZc" id="vla-bH-GlX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vxc-KK-6yb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
