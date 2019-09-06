@@ -66,11 +66,12 @@ class PokedexTableViewController: UITableViewController {
 		if segue.identifier == "ShowSearchPokemonSegue" {
 			let searchVC = segue.destination as? PokemonDetailViewController
 			searchVC?.pokemonController = pokemonController
-		} else if {
-			
+		} else if segue.identifier == "ShowDetailPokemonSegue" {
+			if let indexPath = self.tableView.indexPathForSelectedRow {
+				let detailVC = segue.destination as? PokemonDetailViewController
+				detailVC?.pokemonController = pokemonController
+				detailVC?.pokemon = pokemonController.pokemon[indexPath.row]
+			}
 		}
-		
     }
-
-
 }
